@@ -10,8 +10,10 @@
 				<body>
 					<h1>Action wirt Neugestartrt!!!</h1>
 					<?php
-					$output1 = shell_exec('service mc_lobby restart');
+					$output1 = shell_exec('service mc_phl restart');
 					echo "<pre>$output1</pre>";
+					$output2 = shell_exec('service mc_phl exec say hi');
+					echo "<pre>$output2</pre>";
 					?>
 					<?php $site = "index.php"; header( "refresh:3;url=$site" ); ?>
 				</body>

@@ -23,21 +23,11 @@ $aktuelleseitevar = $_SERVER['REQUEST_URI'];
 /*eingelogt*/
 if( isset($_SESSION['user'])){
 
-/*Diverses*/
-if($aktuelleseite == "/forum/home.php"){
-	$index = "active";
-}elseif($aktuelleseite == "/forum/server.php"){
-	$server = "active";
-}elseif($aktuelleseite == "/forum/serverteam.php"){
-	$team = "active";
-}
-/*Foren*/
-elseif($aktuelleseite == "/forum/showthreads.php"){
-	$forum = "active";
-}elseif($aktuelleseite == "/forum/over.php"){
-	$forum = "active";
-}elseif($aktuelleseite == "/forum/showposts.php"){
-	$forum = "active";
+	/*Diverses*/
+	if($aktuelleseite == "/forum/index.php"){
+		$index = "active";
+	}elseif($aktuelleseite == "/forum/server.php"){
+		$server = "active";
 }
 }
 
@@ -45,7 +35,7 @@ elseif($aktuelleseite == "/forum/showthreads.php"){
 	$res=mysql_query("SELECT * FROM users WHERE userId=".$_SESSION['user']);
  	$userRow=mysql_fetch_array($res);
  
-	$indexs = "home.php";
+	$indexs = "index.php";
 	$tests = "server.php";
 	$teams = "serverteam.php";
 	$forums = "over.php";
@@ -73,17 +63,16 @@ elseif($aktuelleseite == "/forum/showthreads.php"){
           </button>
           <a class="navbar-brand <?php echo $index; ?>" href="<?php echo $indexs; ?>">Home</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <?php if( isset($_SESSION['user'])){ ?>
+		<div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class=" <?php echo $server; ?>"><a href="<?php echo $tests; ?>">Server</a></li>
-            <li class=" <?php echo $forum; ?>"><a href="<?php echo $forums; ?>">Forum</a></li>
-            <li class=" <?php echo $team; ?>"><a href="<?php echo $teams; ?>">Team</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-     <span class="glyphicon glyphicon-user"></span>&nbsp;<?php echo $cando; ?><?php echo $userRow['userName']; ?>&nbsp;<span class="caret"></span></a>
+				<span class="glyphicon glyphicon-user"></span>&nbsp;<?php echo $cando; ?><?php echo $userRow['userName']; ?>&nbsp;<span class="caret"></span></a><?php } ?>
               <ul class="dropdown-menu">
               <?php echo $drop; ?>
               <!--
