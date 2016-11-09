@@ -8,9 +8,9 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<body>
-					<h1>Action wirt ausgeführt!!!</h1>
+					<h1>Action wirt Neugestartrt!!!</h1>
 					<?php
-					$output1 = shell_exec('ls');
+					$output1 = shell_exec('service mc_lobby restart');
 					echo "<pre>$output1</pre>";
 					?>
 					<?php $site = "index.php"; header( "refresh:3;url=$site" ); ?>
